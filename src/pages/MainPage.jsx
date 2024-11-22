@@ -4,7 +4,6 @@ import useGreeting from "../hooks/useGreeting";
 import { FaGithub, FaLinkedin } from 'react-icons/fa'; // For GitHub and LinkedIn
 import { HiOutlineMail } from 'react-icons/hi'; // For Email
 
-
 const MainPage = () => {
     const greeting = useGreeting();
     
@@ -19,6 +18,7 @@ const MainPage = () => {
             <h2>Welcome to My Portfolio!</h2>
             <p>Explore my work and learn more about me.</p>
             {/* need to change font */}
+        </header>
 
             {/* Bio */}
             <section style={styles.bioSection}>
@@ -75,8 +75,18 @@ const MainPage = () => {
                     </ul>
                 </div>
             </section>
-        </header>
-        
+            {/* Skill Section */}
+            <section>
+                
+            </section>
+            {/* Work Experience Section */}
+            <section>
+
+            </section>
+            {/* Paper Section */}
+            <section>
+
+            </section>
     </div>
     
   );
