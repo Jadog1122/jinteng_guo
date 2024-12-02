@@ -4,10 +4,13 @@ body {
   font-optical-sizing: auto;
   font-weight: 400; /* Adjust weight as needed */
   font-style: normal;
-  background-color: #E7E8D1;
+  background-color: #E7E8D1
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+html {
+  scroll-behavior: smooth;
 }

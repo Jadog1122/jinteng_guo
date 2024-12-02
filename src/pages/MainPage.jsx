@@ -3,7 +3,10 @@ import React from "react";
 import useGreeting from "../hooks/useGreeting";
 import { FaGithub, FaLinkedin } from 'react-icons/fa'; // For GitHub and LinkedIn
 import { HiOutlineMail } from 'react-icons/hi'; // For Email
-
+import Experience from "./Experience"; //work experience
+import Blog from "./Blog"; //paper
+import About from "./About"; //skills
+import Navbar from "../components/Navbar";
 const MainPage = () => {
     const greeting = useGreeting();
     
@@ -13,6 +16,9 @@ const MainPage = () => {
     
     return (
     <div style={styles.container}>
+        {/* Navigation Bar */}
+        <Navbar />
+
         <header style={styles.header}>
             <h2>{greeting}</h2>
             <h2>Welcome to My Portfolio!</h2>
@@ -21,7 +27,7 @@ const MainPage = () => {
         </header>
 
             {/* Bio */}
-            <section style={styles.bioSection}>
+            <section id="bio" style={styles.bioSection}>
                 <div style={styles.profileContainer}>
                     {/* my_picture */}
                     <img 
@@ -66,7 +72,7 @@ const MainPage = () => {
                         Like to explore new tech business idea, recently started a new application, Univisor, 
                         aim to help US university student better get adpated in new school life, 
                         and find target when enrolling course based on different professor and futuer career path.
-                        "Due to my personal design taste, you won't find dark mode in my website!"
+                        "Due to my personal design taste, you won't find dark mode in my any applications!"
                     </p>
                     <ul style={styles.InterestList}>
                         <li><b>Research Interest:</b> Trading Strategies; Portfolio Optimization</li>
@@ -76,16 +82,16 @@ const MainPage = () => {
                 </div>
             </section>
             {/* Skill Section */}
-            <section>
-                
+            <section id="skill" style={styles.section}>
+                <About />
             </section>
             {/* Work Experience Section */}
-            <section>
-
+            <section id = "workexperience" style={styles.section}>
+                <Experience />
             </section>
             {/* Paper Section */}
-            <section>
-
+            <section id="paper" style={styles.section}>
+                <Blog />
             </section>
     </div>
     
@@ -94,7 +100,7 @@ const MainPage = () => {
 
 const styles = {
     container: {
-      maxWidth: "1000px",
+      maxWidth: "1100px",
       margin: "0 auto",
       padding: "2rem",
       fontFamily: "Montserrat",
@@ -155,7 +161,13 @@ const styles = {
       icon: {
         fontSize: "2rem", // Icon size
       },
-
+    section:{
+        marginTop: "2rem",
+        padding: "2rem",
+        backgroundColor: "white",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    }
   };
 
 export default MainPage;

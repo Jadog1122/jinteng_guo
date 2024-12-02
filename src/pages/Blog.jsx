@@ -5,13 +5,13 @@ const Blog = () => {
   return (
     <div style={styles.subPage}>
       <h1>Blog</h1>
-      <p>This is the content of Sub Page 2.</p>
+      <p>Waiting for more...</p>
     </div>
   );
 };
 
 const styles = {
-  subPage: { textAlign: "center", padding: "2rem" },
+  subPage: { textAlign: "center", padding: "3rem" },
 };
 
 export default Blog;
