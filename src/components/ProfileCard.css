@@ -33,6 +33,10 @@
   transform: translate3d(0, 0, 0.1px);
   position: relative;
   touch-action: none;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 .pc-card-wrapper::before {
@@ -61,8 +65,9 @@
 }
 
 .pc-card {
-  height: 80svh;
-  max-height: 540px;
+  height: 85vh;
+  max-height: 650px;
+  min-height: 500px;
   display: grid;
   aspect-ratio: 0.718;
   border-radius: var(--card-radius);

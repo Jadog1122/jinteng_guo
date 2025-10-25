@@ -264,13 +264,17 @@ const styles = {
 
     // Sidebar Profile
     sidebar: {
-        width: '320px',
+        width: 'auto',
+        minWidth: '300px',
+        maxWidth: '600px',
         flexShrink: 0,
         position: 'sticky',
         top: '90px',
         height: 'fit-content',
-        maxHeight: 'calc(100vh - 110px)',
-        overflowY: 'auto',
+        overflow: 'visible',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
     },
 
     profileCard: {
