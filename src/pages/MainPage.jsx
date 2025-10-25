@@ -58,7 +58,7 @@ const MainPage = () => {
             visual: "gradient-2",
             tech: ["React", "Node.js", "MongoDB"],
             status: "Completed",
-            gridSpan: "1 / 3 / 2 / 4"
+            gridSpan: "1 / 3 / 2 / 5"
         },
         {
             id: 3,
@@ -78,7 +78,7 @@ const MainPage = () => {
             visual: "gradient-4",
             tech: ["Risk Analysis", "Compliance"],
             status: "Completed",
-            gridSpan: "2 / 2 / 3 / 4"
+            gridSpan: "2 / 2 / 3 / 5"
         },
         {
             id: 5,
@@ -98,7 +98,7 @@ const MainPage = () => {
             visual: "gradient-6",
             tech: ["Java", "JavaScript", "React"],
             status: "Ongoing",
-            gridSpan: "3 / 3 / 4 / 4"
+            gridSpan: "3 / 3 / 4 / 5"
         }
     ];
 
@@ -349,8 +349,8 @@ const styles = {
     // Projects Grid
     projectsGrid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gridTemplateRows: 'repeat(3, auto)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gridAutoRows: '400px',
         gap: '1.5rem',
         alignItems: 'stretch',
     },
@@ -368,7 +368,7 @@ const styles = {
     },
 
     projectVisual: {
-        height: '260px',
+        height: '200px',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
@@ -449,6 +449,10 @@ const styles = {
 
     projectContent: {
         padding: '1.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        height: 'calc(100% - 200px)',
+        justifyContent: 'space-between',
     },
 
     projectTitle: {
@@ -459,9 +463,14 @@ const styles = {
     },
 
     projectDescription: {
-        fontSize: '0.8125rem',
+        fontSize: '0.875rem',
         lineHeight: 1.5,
         color: '#6b6b6b',
+        marginBottom: '1rem',
+        display: '-webkit-box',
+        WebkitLineClamp: 3,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
     },
 
     // Newsletter Modal
