@@ -294,10 +294,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 66, 37, 0.3);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  border-radius: 15px;
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  border-radius: 0;
   padding: 12px 14px;
   pointer-events: auto;
 }

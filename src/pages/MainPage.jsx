@@ -132,10 +132,6 @@ const MainPage = () => {
 
                 {/* Content Area */}
                 <main style={styles.contentArea}>
-                    <div style={styles.contentHeader}>
-                        <span style={styles.timestamp}>{formatTime(currentTime)}</span>
-                    </div>
-
                     <div style={styles.projectsGrid}>
                         {projects.map((project, index) => (
                             <MagicBento 
