@@ -1,0 +1,43 @@
+.electric-border {
+  position: relative;
+  display: inline-block;
+  border-radius: 16px;
+  cursor: pointer;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    #004225,
+    #004225,
+    #00ff41,
+    #00ff41,
+    #004225
+  );
+  background-size: 200% 100%;
+  animation: electric-border-flow 3s linear infinite;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@keyframes electric-border-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.electric-border:hover {
+  animation-duration: 1s;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+.electric-border > * {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}

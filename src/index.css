@@ -1,16 +1,105 @@
-body {
+/* Reset and base styles */
+* {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* Adjust weight as needed */
-  font-style: normal;
-  background-color: #E7E8D1
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #f3f3f3;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+  --accent-pink: #ff0099;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-yellow: #fbbf24;
+  --border-light: #e5e5e5;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .main-container {
+    flex-direction: column !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(4, auto) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-pills {
+    display: none !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(6, auto) !important;
+  }
+  
+  .magic-bento {
+    grid-area: auto !important;
+  }
+
+  .newsletter-modal {
+    width: calc(100% - 2rem) !important;
+    left: 1rem !important;
+    right: 1rem !important;
+  }
+
+  .footer-bar {
+    width: calc(100% - 2rem) !important;
+  }
 }
