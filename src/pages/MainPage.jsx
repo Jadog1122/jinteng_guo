@@ -3,21 +3,11 @@ import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import Navbar from "../components/Navbar";
-import ElectricBorder from "../components/ElectricBorder";
-import MagicBento from "../components/MagicBento";
-import ProfileCard from "../components/ProfileCard";
+import SpotlightCard from "../components/SpotlightCard";
+import SimpleMusicPlayer from "../components/SimpleMusicPlayer";
 
 const MainPage = () => {
-    const [currentTime, setCurrentTime] = useState(new Date());
     const [showNewsletter, setShowNewsletter] = useState(false);
-
-    // Update clock every second
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTime(new Date());
-        }, 1000);
-        return () => clearInterval(timer);
-    }, []);
 
     // Show newsletter after 4 seconds
     useEffect(() => {
@@ -27,161 +17,84 @@ const MainPage = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    const formatTime = (date) => {
-        return date.toLocaleTimeString('en-US', { 
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-    };
-
-    const [hoveredCard, setHoveredCard] = useState(null);
-
     const projects = [
         {
             id: 1,
             title: "Univisor",
+            company: "Startup",
             description: "Founded and developed Univisor, a platform designed to assist college students with academic planning, professor evaluations, and community building.",
-            type: "startup",
-            visual: "gradient-1",
             tech: ["React", "Node.js", "MongoDB"],
             status: "Active",
-            gridSpan: "1 / 1 / 2 / 3",
-            featured: true
+            logo: "🚀",
+            spotlightColor: "rgba(0, 229, 255, 0.2)"
         },
         {
             id: 2,
-            title: "ALMS Platform",
-            description: "Developed scalable web applications using React, Node.js, and MongoDB as a Full Stack Developer.",
-            type: "development",
-            visual: "gradient-2",
-            tech: ["React", "Node.js", "MongoDB"],
+            title: "Financial Analyst",
+            company: "Bunge",
+            description: "Analyzed financial data and created forecasting models for commodity trading. Developed Python scripts for data automation and processed trading documents into SAP formats.",
+            tech: ["Python", "SAP", "Financial Analysis"],
             status: "Completed",
-            gridSpan: "1 / 3 / 2 / 5"
+            logo: "📊",
+            spotlightColor: "rgba(0, 229, 255, 0.2)"
         },
         {
             id: 3,
-            title: "Financial Analytics",
-            description: "Designed Python-based conversion applications for financial documents into SAP formats.",
-            type: "finance",
-            visual: "gradient-3",
-            tech: ["Python", "SAP"],
+            title: "ALMS Platform",
+            company: "Full Stack Developer",
+            description: "Developed scalable web applications using React, Node.js, and MongoDB as a Full Stack Developer.",
+            tech: ["React", "Node.js", "MongoDB"],
             status: "Completed",
-            gridSpan: "2 / 1 / 3 / 2"
-        },
-        {
-            id: 4,
-            title: "Risk Management",
-            description: "Conducted comprehensive credit risk analysis and due diligence on loans for regulatory compliance.",
-            type: "finance",
-            visual: "gradient-4",
-            tech: ["Risk Analysis", "Compliance"],
-            status: "Completed",
-            gridSpan: "2 / 2 / 3 / 5"
-        },
-        {
-            id: 5,
-            title: "Portfolio Optimization",
-            description: "Research focus on trading strategies using econometric models and quantitative analysis.",
-            type: "research",
-            visual: "gradient-5",
-            tech: ["Python", "R", "Econometrics"],
-            status: "Ongoing",
-            gridSpan: "3 / 1 / 4 / 3"
-        },
-        {
-            id: 6,
-            title: "Web Development",
-            description: "Full-stack development expertise in Java, JavaScript, and modern frameworks.",
-            type: "development",
-            visual: "gradient-6",
-            tech: ["Java", "JavaScript", "React"],
-            status: "Ongoing",
-            gridSpan: "3 / 3 / 4 / 5"
+            logo: "💻",
+            spotlightColor: "rgba(0, 229, 255, 0.2)"
         }
     ];
-
-    const handleProjectHover = (projectId) => {
-        setHoveredCard(projectId);
-    };
-
-    const handleProjectLeave = () => {
-        setHoveredCard(null);
-    };
     
     return (
     <div style={styles.container}>
+            
             {/* Top Navigation */}
         <Navbar />
 
             {/* Main Content */}
             <div style={styles.mainContainer}>
-                {/* Sidebar Profile */}
+                {/* Sidebar Music Player */}
                 <aside style={styles.sidebar}>
-                    <ProfileCard 
-                        avatarUrl="/me_p1.jpg"
-                        name="Jinteng (Jase) Guo"
-                        title="Economics & CS Student"
-                        handle="jadog"
-                        status="Available"
-                        contactText="Contact"
-                        onContactClick={() => window.open('mailto:jg6902@stern.nyu.edu')}
-                    />
+                        <SimpleMusicPlayer />
                 </aside>
 
                 {/* Content Area */}
                 <main style={styles.contentArea}>
                     <div style={styles.projectsGrid}>
                         {projects.map((project, index) => (
-                            <MagicBento 
+                            <SpotlightCard 
                                 key={project.id}
-                                gridSpan={project.gridSpan}
-                                className={project.featured ? 'featured' : ''}
+                                spotlightColor={project.spotlightColor}
+                                className="custom-spotlight-card"
                             >
-                                <ElectricBorder>
-                                    <article 
-                                        style={{
-                                            ...styles.projectCard, 
-                                            animationDelay: `${index * 50}ms`,
-                                            transform: hoveredCard === project.id ? 'scale(1.02)' : 'scale(1)',
-                                            margin: 0,
-                                            background: '#ffffff',
-                                            height: '100%',
-                                            zIndex: 2,
-                                            position: 'relative',
-                                        }}
-                                        onMouseEnter={() => handleProjectHover(project.id)}
-                                        onMouseLeave={handleProjectLeave}
-                                    >
-                                        <div style={{...styles.projectVisual, ...styles[project.visual]}}>
-                                            <div style={styles.projectIcon}>
-                                                {project.type === 'startup' && '🚀'}
-                                                {project.type === 'development' && '💻'}
-                                                {project.type === 'finance' && '📊'}
-                                                {project.type === 'research' && '🔬'}
-                                            </div>
-                                            <div style={styles.projectStatus}>
-                                                {project.status}
-                                            </div>
+                                <div style={styles.spotlightCardContent}>
+                                    <div style={styles.spotlightCardHeader}>
+                                        <div style={styles.spotlightCardLogo}>
+                                            {project.logo}
                                         </div>
-                                        <div style={styles.projectContent}>
-                                            <div style={styles.projectHeader}>
-                                                <h3 style={styles.projectTitle}>{project.title}</h3>
-                                                <div style={styles.projectType}>{project.type}</div>
-                                            </div>
-                                            <p style={styles.projectDescription}>{project.description}</p>
-                                            <div style={styles.techStack}>
-                                                {project.tech.map((tech, techIndex) => (
-                                                    <span key={techIndex} style={styles.techTag}>
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                            </div>
+                                        <div style={styles.spotlightCardStatus}>
+                                            {project.status}
                                         </div>
-                                    </article>
-                                </ElectricBorder>
-                            </MagicBento>
+                                    </div>
+                                    <div style={styles.spotlightCardBody}>
+                                        <h3 style={styles.spotlightCardTitle}>{project.title}</h3>
+                                        <div style={styles.spotlightCardCompany}>{project.company}</div>
+                                        <p style={styles.spotlightCardDescription}>{project.description}</p>
+                                        <div style={styles.spotlightCardTech}>
+                                            {project.tech.map((tech, techIndex) => (
+                                                <span key={techIndex} style={styles.spotlightCardTag}>
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </SpotlightCard>
                         ))}
                     </div>
                 </main>
@@ -241,12 +154,13 @@ const MainPage = () => {
 const styles = {
     container: {
         minHeight: '100vh',
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#0a0a0a',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "Segoe UI", sans-serif',
-        color: '#1a1a1a',
+        color: '#ffffff',
         lineHeight: 1.5,
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
+        position: 'relative',
     },
     
     // Main Layout
@@ -256,18 +170,14 @@ const styles = {
         margin: '2rem auto',
         padding: '0 2rem',
         gap: '2rem',
+        position: 'relative',
+        zIndex: 10,
     },
 
-    // Sidebar Profile
+    // Sidebar Music Player
     sidebar: {
-        width: 'auto',
-        minWidth: '300px',
-        maxWidth: '600px',
+        width: '280px',
         flexShrink: 0,
-        position: 'sticky',
-        top: '90px',
-        height: 'fit-content',
-        overflow: 'visible',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -348,11 +258,11 @@ const styles = {
 
     // Projects Grid
     projectsGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gridAutoRows: '400px',
+        display: 'flex',
+        flexDirection: 'row',
         gap: '1.5rem',
         alignItems: 'stretch',
+        flexWrap: 'wrap',
     },
 
     projectCard: {
@@ -445,6 +355,91 @@ const styles = {
     },
     'gradient-6': {
         background: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+    },
+
+    // SpotlightCard Styles
+    spotlightCardContent: {
+        position: 'relative',
+        zIndex: 1,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
+    spotlightCardHeader: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '1rem',
+    },
+
+    spotlightCardLogo: {
+        fontSize: '2.5rem',
+        filter: 'brightness(0.9)',
+    },
+
+    spotlightCardStatus: {
+        background: 'rgba(0, 229, 255, 0.2)',
+        color: '#00e5ff',
+        padding: '0.25rem 0.625rem',
+        borderRadius: '6px',
+        fontSize: '0.7rem',
+        fontWeight: 600,
+        border: '1px solid rgba(0, 229, 255, 0.3)',
+    },
+
+    spotlightCardBody: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
+    spotlightCardTitle: {
+        fontSize: '1.1rem',
+        fontWeight: 600,
+        color: '#ffffff',
+        marginBottom: '0.4rem',
+    },
+
+    spotlightCardCompany: {
+        background: 'rgba(0, 229, 255, 0.15)',
+        color: '#00e5ff',
+        padding: '0.25rem 0.625rem',
+        borderRadius: '6px',
+        fontSize: '0.75rem',
+        fontWeight: 600,
+        marginBottom: '0.75rem',
+        width: 'fit-content',
+        border: '1px solid rgba(0, 229, 255, 0.2)',
+    },
+
+    spotlightCardDescription: {
+        fontSize: '0.8rem',
+        lineHeight: 1.5,
+        color: '#a0a0a0',
+        marginBottom: '1rem',
+        flex: 1,
+        overflow: 'hidden',
+        display: '-webkit-box',
+        WebkitLineClamp: 4,
+        WebkitBoxOrient: 'vertical',
+    },
+
+    spotlightCardTech: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '0.5rem',
+    },
+
+    spotlightCardTag: {
+        background: 'rgba(255, 255, 255, 0.05)',
+        color: '#ffffff',
+        padding: '0.25rem 0.625rem',
+        borderRadius: '5px',
+        fontSize: '0.7rem',
+        fontWeight: 500,
+        border: '1px solid rgba(255, 255, 255, 0.1)',
     },
 
     projectContent: {
