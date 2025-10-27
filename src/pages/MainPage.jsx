@@ -86,10 +86,40 @@ const MainPage = () => {
 
             {/* Main Content */}
             <div style={styles.mainContainer}>
-                {/* Sidebar Music Player */}
-                <aside style={styles.sidebar}>
-                        <SimpleMusicPlayer />
-                </aside>
+                {/* Mobile Profile Section */}
+                <div style={styles.mobileProfileSection}>
+                    <div style={styles.profileImageContainer}>
+                        <img 
+                            src="/me_p1.jpg" 
+                            alt="Jinteng Guo - Entrepreneur & Full Stack Developer" 
+                        style={styles.profileImage}
+                    />
+                    </div>
+                </div>
+
+                {/* Logo Loop Section */}
+                <div style={styles.logoLoopSection}>
+                    <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
+                    <div style={styles.logoLoopWrapper}>
+                        <LogoLoop
+                            logos={educationWorkLogos}
+                            speed={80}
+                            direction="left"
+                            logoHeight={50}
+                            gap={40}
+                            pauseOnHover
+                            scaleOnHover
+                            fadeOut
+                            fadeOutColor="#0a0a0a"
+                            ariaLabel="Education and work experience"
+                        />
+                    </div>
+                </div>
+
+                {/* Music Player Section */}
+                <div style={styles.musicPlayerSection}>
+                    <SimpleMusicPlayer />
+                </div>
 
                 {/* Content Area */}
                 <main style={styles.contentArea}>
@@ -125,25 +155,6 @@ const MainPage = () => {
                             </SpotlightCard>
                         ))}
                     </div>
-
-                    {/* Logo Loop Section */}
-                    <div style={styles.logoLoopSection}>
-                        <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
-                        <div style={styles.logoLoopWrapper}>
-                            <LogoLoop
-                                logos={educationWorkLogos}
-                                speed={80}
-                                direction="left"
-                                logoHeight={50}
-                                gap={40}
-                                pauseOnHover
-                                scaleOnHover
-                                fadeOut
-                                fadeOutColor="#0a0a0a"
-                                ariaLabel="Education and work experience"
-                            />
-                        </div>
-                    </div>
                 </main>
             </div>
 
@@ -153,6 +164,7 @@ const MainPage = () => {
                     <button 
                         style={styles.closeNewsletter}
                         onClick={() => setShowNewsletter(false)}
+                        aria-label="Close newsletter modal"
                     >
                         ×
                     </button>
@@ -163,6 +175,7 @@ const MainPage = () => {
                             style={styles.emailInput} 
                             placeholder="Enter Email" 
                             required 
+                            aria-label="Email address"
                         />
                         <button 
                             style={styles.subscribeBtn}
@@ -183,13 +196,13 @@ const MainPage = () => {
                     jg6902@stern.nyu.edu
                 </a>
                 <div style={styles.socialIcons}>
-                    <a href="https://github.com/Jadog1122" target="_blank" rel="noopener noreferrer" style={styles.socialIcon}>
+                    <a href="https://github.com/Jadog1122" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} aria-label="GitHub profile">
                         <FaGithub />
                     </a>
-                    <a href="https://www.linkedin.com/in/jinteng-guo-14079a26b/" target="_blank" rel="noopener noreferrer" style={styles.socialIcon}>
+                    <a href="https://www.linkedin.com/in/jinteng-guo-14079a26b/" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} aria-label="LinkedIn profile">
                         <FaLinkedin />
                     </a>
-                    <a href="mailto:jg6902@stern.nyu.edu" style={styles.socialIcon}>
+                    <a href="mailto:jg6902@stern.nyu.edu" style={styles.socialIcon} aria-label="Send email">
                         <HiOutlineMail />
                     </a>
                 </div>
@@ -212,22 +225,40 @@ const styles = {
     
     // Main Layout
     mainContainer: {
-        display: 'flex',
         maxWidth: '1440px',
-        margin: '2rem auto',
-        padding: '0 2rem',
-        gap: '2rem',
+        margin: '0 auto',
+        padding: '1rem',
         position: 'relative',
         zIndex: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
     },
 
-    // Sidebar Music Player
-    sidebar: {
-        width: '280px',
-        flexShrink: 0,
+    // Mobile Profile Section
+    mobileProfileSection: {
         display: 'flex',
-        alignItems: 'flex-start',
         justifyContent: 'center',
+        alignItems: 'center',
+        padding: '2rem 0',
+    },
+
+    profileImageContainer: {
+        width: '200px',
+        height: '200px',
+        borderRadius: '50%',
+        overflow: 'hidden',
+        border: '4px solid rgba(0, 229, 255, 0.3)',
+        boxShadow: '0 0 30px rgba(0, 229, 255, 0.2)',
+        transition: 'all 0.3s ease',
+        cursor: 'pointer',
+    },
+
+    profileImage: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        transition: 'transform 0.3s ease',
     },
 
     profileCard: {
@@ -303,13 +334,20 @@ const styles = {
         color: '#999999',
     },
 
+    // Music Player Section
+    musicPlayerSection: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '1rem 0',
+    },
+
     // Projects Grid
     projectsGrid: {
-        display: 'flex',
-        flexDirection: 'row',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '1.5rem',
         alignItems: 'stretch',
-        flexWrap: 'wrap',
     },
 
     projectCard: {
@@ -625,9 +663,10 @@ const styles = {
 
     // Logo Loop Section
     logoLoopSection: {
-        marginTop: '3rem',
-        paddingTop: '2rem',
+        marginTop: '1rem',
+        padding: '1.5rem 0',
         borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
     },
 
     logoLoopTitle: {
@@ -649,7 +688,7 @@ const styles = {
     },
 };
 
-// Add CSS animations
+// Add CSS animations and responsive styles
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
     @keyframes fadeInUp {
@@ -660,6 +699,90 @@ styleSheet.textContent = `
         to {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+
+    /* Mobile-first responsive design */
+    @media (max-width: 768px) {
+        .mainContainer {
+            padding: 0.5rem !important;
+            gap: 1.5rem !important;
+        }
+        
+        .mobileProfileSection {
+            padding: 1rem 0 !important;
+        }
+        
+        .profileImageContainer {
+            width: 150px !important;
+            height: 150px !important;
+        }
+        
+        .projectsGrid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+        }
+        
+        .newsletterModal {
+            width: calc(100vw - 2rem) !important;
+            right: 1rem !important;
+            left: 1rem !important;
+        }
+        
+        .footerBar {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            padding: 1rem !important;
+            bottom: 0.5rem !important;
+        }
+        
+        .logoLoopTitle {
+            font-size: 1.1rem !important;
+        }
+        
+        .logoLoopWrapper {
+            height: 80px !important;
+            padding: 15px 0 !important;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .projectsGrid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .projectsGrid {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Focus styles for accessibility */
+    button:focus,
+    a:focus,
+    input:focus {
+        outline: 2px solid #00e5ff !important;
+        outline-offset: 2px !important;
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .spotlightCardContent {
+            border: 2px solid #ffffff !important;
+        }
+        
+        .spotlightCardTag {
+            border: 1px solid #ffffff !important;
         }
     }
 `;

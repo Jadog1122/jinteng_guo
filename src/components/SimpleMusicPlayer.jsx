@@ -35,9 +35,6 @@ const SimpleMusicPlayer = () => {
     return `https://w.soundcloud.com/player/?url=${encodedUrl}&color=%2300e5ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
   };
 
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   const nextTrack = () => {
     const nextIndex = (currentTrack + 1) % tracks.length;
