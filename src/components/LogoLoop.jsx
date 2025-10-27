@@ -3,14 +3,14 @@ import './LogoLoop.css';
 
 const LogoLoop = ({ 
   logos = [], 
-  speed = 120,
+  speed = 3000,
   direction = 'left',
-  logoHeight = 48,
-  gap = 40,
+  logoHeight = 40,
+  gap = 50,
   pauseOnHover = false,
   scaleOnHover = false,
   fadeOut = false,
-  fadeOutColor = '#ffffff',
+  fadeOutColor = '#0a0a0a',
   ariaLabel = 'Logo loop'
 }) => {
   const [isPaused, setIsPaused] = React.useState(false);

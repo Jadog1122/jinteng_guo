@@ -66,7 +66,7 @@ const MainPage = () => {
             href: "https://www.brown.edu"
         },
         { 
-            node: <div style={{ fontWeight: 700, color: '#6C2E83', fontSize: '18px' }}>UCL</div>, 
+            node: <div style={{ fontWeight: 700, color: 'white', fontSize: '5vh', }}>UCL</div>, 
             title: "University College London",
             href: "https://www.ucl.ac.uk"
         },
@@ -132,10 +132,10 @@ const MainPage = () => {
                         <div style={styles.logoLoopWrapper}>
                             <LogoLoop
                                 logos={educationWorkLogos}
-                                speed={80}
+                                speed={5}
                                 direction="left"
-                                logoHeight={50}
-                                gap={40}
+                                logoHeight={60}
+                                gap={50}
                                 pauseOnHover
                                 scaleOnHover
                                 fadeOut

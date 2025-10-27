@@ -41,7 +41,7 @@
 
 .logo-item img {
   max-height: 100%;
-  max-width: 120px;
+  max-width: 11ch;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -50,7 +50,7 @@
 }
 
 .logo-item:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .logo-item:hover img {
