@@ -101,12 +101,12 @@ const SimpleMusicPlayer = () => {
         </div>
 
         {/* Contact Button */}
-        <button 
+        {/* <button 
           className="contact-me-btn"
           onClick={() => window.open('mailto:jg6902@stern.nyu.edu')}
         >
           Contact Me
-        </button>
+        </button> */}
       </div>
     </div>
   );
