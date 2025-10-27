@@ -181,8 +181,8 @@ const MainPage = () => {
 
             {/* Footer Bar */}
             <div className="footer-bar" style={styles.footerBar}>
-                <a href="mailto:jg6902@stern.nyu.edu" style={styles.contactEmail}>
-                    jg6902@stern.nyu.edu
+                <a href="mailto:jinteng_guo@fas.harvard.edu" style={styles.contactEmail}>
+                    jinteng_guo@fas.harvard.edu
                 </a>
                 <div style={styles.socialIcons}>
                     <a href="https://github.com/Jadog1122" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} aria-label="GitHub profile">
@@ -686,6 +686,7 @@ styleSheet.textContent = `
         .projects-grid {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
+            justify-items: center !important;
         }
         
         .newsletter-modal {

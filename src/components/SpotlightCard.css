@@ -13,6 +13,15 @@
   flex: 0 0 300px;
 }
 
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .card-spotlight {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+  }
+}
+
 .card-spotlight::before {
   content: '';
   position: absolute;
