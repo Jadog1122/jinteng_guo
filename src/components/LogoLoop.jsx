@@ -41,24 +41,46 @@ const LogoLoop = ({
           '--speed': isPaused ? '0s' : `${speed}s`,
         }}
       >
-        {duplicatedLogos.map((logo, index) => (
-          <div 
-            key={index}
-            className={`logo-item ${scaleOnHover ? 'scale-on-hover' : ''}`}
-            style={{
-              '--logo-height': `${logoHeight}px`,
-              marginRight: gap,
-            }}
-          >
-            {logo.node || (
-              <img 
-                src={logo.src} 
-                alt={logo.alt || logo.title || 'Logo'} 
-                style={{ height: logoHeight }}
-              />
-            )}
-          </div>
-        ))}
+        {duplicatedLogos.map((logo, index) => {
+          const logoContent = logo.node || (
+            <img 
+              src={logo.src} 
+              alt={logo.alt || logo.title || 'Logo'} 
+              style={{ height: logoHeight }}
+            />
+          );
+
+          return logo.href ? (
+            <a
+              key={index}
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`logo-item ${scaleOnHover ? 'scale-on-hover' : ''} clickable`}
+              style={{
+                '--logo-height': `${logoHeight}px`,
+                marginRight: gap,
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+              title={logo.title}
+            >
+              {logoContent}
+            </a>
+          ) : (
+            <div 
+              key={index}
+              className={`logo-item ${scaleOnHover ? 'scale-on-hover' : ''}`}
+              style={{
+                '--logo-height': `${logoHeight}px`,
+                marginRight: gap,
+              }}
+              title={logo.title}
+            >
+              {logoContent}
+            </div>
+          );
+        })}
       </div>
       {fadeOut && (
         <>

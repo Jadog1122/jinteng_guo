@@ -1,8 +1,7 @@
 // src/pages/MainPage.jsx
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaUniversity } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
-import { SiGooglescholar } from 'react-icons/si';
 import Navbar from "../components/Navbar";
 import SpotlightCard from "../components/SpotlightCard";
 import SimpleMusicPlayer from "../components/SimpleMusicPlayer";
@@ -55,20 +54,27 @@ const MainPage = () => {
     // Educational and Work Experience Logos
     const educationWorkLogos = [
         { 
-            node: <div style={{ fontWeight: 700, color: '#57068c', fontSize: '18px' }}>NYU</div>, 
-            title: "New York University", 
+            src: "/logos/NYU_logo.svg", 
+            alt: "NYU", 
+            title: "New York University",
+            href: "https://www.nyu.edu"
         },
         { 
-            node: <div style={{ fontWeight: 700, color: '#8B4513', fontSize: '16px' }}>BROWN</div>, 
-            title: "Brown University", 
+            src: "/logos/Brown Logo_2016_2 Color Process HZ_2400.png", 
+            alt: "Brown University", 
+            title: "Brown University",
+            href: "https://www.brown.edu"
         },
         { 
             node: <div style={{ fontWeight: 700, color: '#6C2E83', fontSize: '18px' }}>UCL</div>, 
-            title: "University College London", 
+            title: "University College London",
+            href: "https://www.ucl.ac.uk"
         },
         { 
-            node: <div style={{ fontWeight: 700, color: '#0066CC', fontSize: '16px' }}>BUNGE</div>, 
-            title: "Bunge Limited", 
+            src: "/logos/Bunge_Limited_Logo.svg", 
+            alt: "Bunge Limited", 
+            title: "Bunge Limited",
+            href: "https://www.bunge.com"
         },
     ];
     

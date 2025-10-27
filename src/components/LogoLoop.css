@@ -54,6 +54,14 @@
   filter: grayscale(0%);
 }
 
+.logo-item.clickable {
+  cursor: pointer;
+}
+
+.logo-item.clickable:hover {
+  opacity: 1;
+}
+
 .scale-on-hover {
   transition: transform 0.3s ease;
 }
