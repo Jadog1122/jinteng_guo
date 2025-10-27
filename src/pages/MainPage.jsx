@@ -86,40 +86,10 @@ const MainPage = () => {
 
             {/* Main Content */}
             <div style={styles.mainContainer}>
-                {/* Mobile Profile Section */}
-                <div style={styles.mobileProfileSection}>
-                    <div style={styles.profileImageContainer}>
-                        <img 
-                            src="/me_p1.jpg" 
-                            alt="Jinteng Guo - Entrepreneur & Full Stack Developer" 
-                        style={styles.profileImage}
-                    />
-                    </div>
-                </div>
-
-                {/* Logo Loop Section */}
-                <div style={styles.logoLoopSection}>
-                    <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
-                    <div style={styles.logoLoopWrapper}>
-                        <LogoLoop
-                            logos={educationWorkLogos}
-                            speed={80}
-                            direction="left"
-                            logoHeight={50}
-                            gap={40}
-                            pauseOnHover
-                            scaleOnHover
-                            fadeOut
-                            fadeOutColor="#0a0a0a"
-                            ariaLabel="Education and work experience"
-                        />
-                    </div>
-                </div>
-
-                {/* Music Player Section */}
-                <div style={styles.musicPlayerSection}>
+                {/* Desktop Sidebar with Music Player */}
+                <aside style={styles.sidebar}>
                     <SimpleMusicPlayer />
-                </div>
+                </aside>
 
                 {/* Content Area */}
                 <main style={styles.contentArea}>
@@ -154,6 +124,25 @@ const MainPage = () => {
                                 </div>
                             </SpotlightCard>
                         ))}
+                    </div>
+
+                    {/* Logo Loop Section */}
+                    <div style={styles.logoLoopSection}>
+                        <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
+                        <div style={styles.logoLoopWrapper}>
+                            <LogoLoop
+                                logos={educationWorkLogos}
+                                speed={80}
+                                direction="left"
+                                logoHeight={50}
+                                gap={40}
+                                pauseOnHover
+                                scaleOnHover
+                                fadeOut
+                                fadeOutColor="#0a0a0a"
+                                ariaLabel="Education and work experience"
+                            />
+                        </div>
                     </div>
                 </main>
             </div>
@@ -225,40 +214,22 @@ const styles = {
     
     // Main Layout
     mainContainer: {
+        display: 'flex',
         maxWidth: '1440px',
-        margin: '0 auto',
-        padding: '1rem',
+        margin: '2rem auto',
+        padding: '0 2rem',
+        gap: '2rem',
         position: 'relative',
         zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2rem',
     },
 
-    // Mobile Profile Section
-    mobileProfileSection: {
+    // Sidebar Music Player
+    sidebar: {
+        width: '280px',
+        flexShrink: 0,
         display: 'flex',
+        alignItems: 'flex-start',
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: '2rem 0',
-    },
-
-    profileImageContainer: {
-        width: '200px',
-        height: '200px',
-        borderRadius: '50%',
-        overflow: 'hidden',
-        border: '4px solid rgba(0, 229, 255, 0.3)',
-        boxShadow: '0 0 30px rgba(0, 229, 255, 0.2)',
-        transition: 'all 0.3s ease',
-        cursor: 'pointer',
-    },
-
-    profileImage: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        transition: 'transform 0.3s ease',
     },
 
     profileCard: {
@@ -332,14 +303,6 @@ const styles = {
         fontFamily: '"SF Mono", "Monaco", monospace',
         fontSize: '0.875rem',
         color: '#999999',
-    },
-
-    // Music Player Section
-    musicPlayerSection: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '1rem 0',
     },
 
     // Projects Grid
@@ -663,10 +626,9 @@ const styles = {
 
     // Logo Loop Section
     logoLoopSection: {
-        marginTop: '1rem',
-        padding: '1.5rem 0',
+        marginTop: '3rem',
+        paddingTop: '2rem',
         borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
     },
 
     logoLoopTitle: {
@@ -705,17 +667,19 @@ styleSheet.textContent = `
     /* Mobile-first responsive design */
     @media (max-width: 768px) {
         .mainContainer {
-            padding: 0.5rem !important;
-            gap: 1.5rem !important;
+            flex-direction: column !important;
+            padding: 1rem !important;
+            gap: 2rem !important;
+            margin: 1rem auto !important;
         }
         
-        .mobileProfileSection {
-            padding: 1rem 0 !important;
+        .sidebar {
+            width: 100% !important;
+            order: 1 !important;
         }
         
-        .profileImageContainer {
-            width: 150px !important;
-            height: 150px !important;
+        .contentArea {
+            order: 2 !important;
         }
         
         .projectsGrid {
@@ -727,6 +691,7 @@ styleSheet.textContent = `
             width: calc(100vw - 2rem) !important;
             right: 1rem !important;
             left: 1rem !important;
+            bottom: 1rem !important;
         }
         
         .footerBar {
@@ -734,6 +699,11 @@ styleSheet.textContent = `
             gap: 0.75rem !important;
             padding: 1rem !important;
             bottom: 0.5rem !important;
+        }
+        
+        .logoLoopSection {
+            margin-top: 2rem !important;
+            padding-top: 1.5rem !important;
         }
         
         .logoLoopTitle {
