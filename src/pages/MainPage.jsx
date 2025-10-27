@@ -134,8 +134,8 @@ const MainPage = () => {
                                 logos={educationWorkLogos}
                                 speed={80}
                                 direction="left"
-                                logoHeight={60}
-                                gap={60}
+                                logoHeight={50}
+                                gap={40}
                                 pauseOnHover
                                 scaleOnHover
                                 fadeOut
