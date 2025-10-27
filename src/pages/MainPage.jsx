@@ -85,15 +85,15 @@ const MainPage = () => {
         <Navbar />
 
             {/* Main Content */}
-            <div style={styles.mainContainer}>
+            <div className="main-container" style={styles.mainContainer}>
                 {/* Desktop Sidebar with Music Player */}
-                <aside style={styles.sidebar}>
+                <aside className="sidebar" style={styles.sidebar}>
                     <SimpleMusicPlayer />
                 </aside>
 
                 {/* Content Area */}
-                <main style={styles.contentArea}>
-                    <div style={styles.projectsGrid}>
+                <main className="content-area" style={styles.contentArea}>
+                    <div className="projects-grid" style={styles.projectsGrid}>
                         {projects.map((project, index) => (
                             <SpotlightCard 
                                 key={project.id}
@@ -127,9 +127,9 @@ const MainPage = () => {
                     </div>
 
                     {/* Logo Loop Section */}
-                    <div style={styles.logoLoopSection}>
-                        <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
-                        <div style={styles.logoLoopWrapper}>
+                    <div className="logo-loop-section" style={styles.logoLoopSection}>
+                        <h3 className="logo-loop-title" style={styles.logoLoopTitle}>Education & Work Experience</h3>
+                        <div className="logo-loop-wrapper" style={styles.logoLoopWrapper}>
                             <LogoLoop
                                 logos={educationWorkLogos}
                                 speed={80}
@@ -149,7 +149,7 @@ const MainPage = () => {
 
             {/* Newsletter Modal */}
             {showNewsletter && (
-                <div style={styles.newsletterModal}>
+                <div className="newsletter-modal" style={styles.newsletterModal}>
                     <button 
                         style={styles.closeNewsletter}
                         onClick={() => setShowNewsletter(false)}
@@ -180,7 +180,7 @@ const MainPage = () => {
             )}
 
             {/* Footer Bar */}
-            <div style={styles.footerBar}>
+            <div className="footer-bar" style={styles.footerBar}>
                 <a href="mailto:jg6902@stern.nyu.edu" style={styles.contactEmail}>
                     jg6902@stern.nyu.edu
                 </a>
@@ -666,7 +666,7 @@ styleSheet.textContent = `
 
     /* Mobile-first responsive design */
     @media (max-width: 768px) {
-        .mainContainer {
+        .main-container {
             flex-direction: column !important;
             padding: 1rem !important;
             gap: 2rem !important;
@@ -678,52 +678,52 @@ styleSheet.textContent = `
             order: 1 !important;
         }
         
-        .contentArea {
+        .content-area {
             order: 2 !important;
         }
         
-        .projectsGrid {
+        .projects-grid {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
         }
         
-        .newsletterModal {
+        .newsletter-modal {
             width: calc(100vw - 2rem) !important;
             right: 1rem !important;
             left: 1rem !important;
             bottom: 1rem !important;
         }
         
-        .footerBar {
+        .footer-bar {
             flex-direction: column !important;
             gap: 0.75rem !important;
             padding: 1rem !important;
             bottom: 0.5rem !important;
         }
         
-        .logoLoopSection {
+        .logo-loop-section {
             margin-top: 2rem !important;
             padding-top: 1.5rem !important;
         }
         
-        .logoLoopTitle {
+        .logo-loop-title {
             font-size: 1.1rem !important;
         }
         
-        .logoLoopWrapper {
+        .logo-loop-wrapper {
             height: 80px !important;
             padding: 15px 0 !important;
         }
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
-        .projectsGrid {
+        .projects-grid {
             grid-template-columns: repeat(2, 1fr) !important;
         }
     }
 
     @media (min-width: 1025px) {
-        .projectsGrid {
+        .projects-grid {
             grid-template-columns: repeat(3, 1fr) !important;
         }
     }
