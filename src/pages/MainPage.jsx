@@ -217,7 +217,7 @@ const styles = {
         display: 'flex',
         maxWidth: '1440px',
         margin: '2rem auto',
-        padding: '0 2rem',
+        padding: '0 2rem 120px 2rem', // Added bottom padding to prevent footer overlap
         gap: '2rem',
         position: 'relative',
         zIndex: 10,
@@ -599,6 +599,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         gap: '1.5rem',
+        zIndex: 1000, // Ensure footer stays above content
     },
 
     contactEmail: {
@@ -668,7 +669,7 @@ styleSheet.textContent = `
     @media (max-width: 768px) {
         .main-container {
             flex-direction: column !important;
-            padding: 1rem !important;
+            padding: 1rem 1rem 120px 1rem !important; /* Added bottom padding for mobile */
             gap: 2rem !important;
             margin: 1rem auto !important;
         }
