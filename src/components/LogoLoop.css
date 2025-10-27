@@ -1,0 +1,80 @@
+.logo-loop-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-loop-track {
+  display: flex;
+  align-items: center;
+  animation: scroll var(--speed, 120s) linear infinite;
+  will-change: transform;
+}
+
+.logo-loop-track.left {
+  animation-direction: normal;
+}
+
+.logo-loop-track.right {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: var(--logo-height, 48px);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.logo-item img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0%);
+}
+
+.scale-on-hover {
+  transition: transform 0.3s ease;
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.1);
+}
+
+.fade-out {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-out.fade-left {
+  left: 0;
+}
+
+.fade-out.fade-right {
+  right: 0;
+}

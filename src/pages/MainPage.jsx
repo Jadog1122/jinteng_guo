@@ -1,10 +1,12 @@
 // src/pages/MainPage.jsx
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaUniversity } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
+import { SiGooglescholar } from 'react-icons/si';
 import Navbar from "../components/Navbar";
 import SpotlightCard from "../components/SpotlightCard";
 import SimpleMusicPlayer from "../components/SimpleMusicPlayer";
+import LogoLoop from "../components/LogoLoop";
 
 const MainPage = () => {
     const [showNewsletter, setShowNewsletter] = useState(false);
@@ -48,6 +50,26 @@ const MainPage = () => {
             logo: "💻",
             spotlightColor: "rgba(0, 229, 255, 0.2)"
         }
+    ];
+
+    // Educational and Work Experience Logos
+    const educationWorkLogos = [
+        { 
+            node: <div style={{ fontWeight: 700, color: '#57068c', fontSize: '18px' }}>NYU</div>, 
+            title: "New York University", 
+        },
+        { 
+            node: <div style={{ fontWeight: 700, color: '#8B4513', fontSize: '16px' }}>BROWN</div>, 
+            title: "Brown University", 
+        },
+        { 
+            node: <div style={{ fontWeight: 700, color: '#6C2E83', fontSize: '18px' }}>UCL</div>, 
+            title: "University College London", 
+        },
+        { 
+            node: <div style={{ fontWeight: 700, color: '#0066CC', fontSize: '16px' }}>BUNGE</div>, 
+            title: "Bunge Limited", 
+        },
     ];
     
     return (
@@ -96,6 +118,25 @@ const MainPage = () => {
                                 </div>
                             </SpotlightCard>
                         ))}
+                    </div>
+
+                    {/* Logo Loop Section */}
+                    <div style={styles.logoLoopSection}>
+                        <h3 style={styles.logoLoopTitle}>Education & Work Experience</h3>
+                        <div style={styles.logoLoopWrapper}>
+                            <LogoLoop
+                                logos={educationWorkLogos}
+                                speed={80}
+                                direction="left"
+                                logoHeight={60}
+                                gap={60}
+                                pauseOnHover
+                                scaleOnHover
+                                fadeOut
+                                fadeOutColor="#0a0a0a"
+                                ariaLabel="Education and work experience"
+                            />
+                        </div>
                     </div>
                 </main>
             </div>
@@ -574,6 +615,31 @@ const styles = {
         textDecoration: 'none',
         color: '#6b6b6b',
         transition: 'all 0.2s',
+    },
+
+    // Logo Loop Section
+    logoLoopSection: {
+        marginTop: '3rem',
+        paddingTop: '2rem',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+    },
+
+    logoLoopTitle: {
+        fontSize: '1.25rem',
+        fontWeight: 600,
+        color: '#ffffff',
+        marginBottom: '1.5rem',
+        textAlign: 'center',
+    },
+
+    logoLoopWrapper: {
+        height: '100px',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'rgba(255, 255, 255, 0.02)',
+        borderRadius: '12px',
+        padding: '20px 0',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
     },
 };
 
